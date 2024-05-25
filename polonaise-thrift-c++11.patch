@@ -1,0 +1,23 @@
+--- polonaise-0.3.1/src/examples/fuse/main.cc.orig	2014-09-16 15:54:36.000000000 +0200
++++ polonaise-0.3.1/src/examples/fuse/main.cc	2024-05-25 18:30:16.361497411 +0200
+@@ -23,7 +23,6 @@
+ #include <memory>
+ #include <mutex>
+ 
+-#include <boost/make_shared.hpp>
+ #include <fuse.h>
+ #include <fuse/fuse_lowlevel.h>
+ #include <fuse/fuse_opt.h>
+@@ -104,9 +103,9 @@ public:
+ 			lock.unlock();
+ 			// No clients in the pool; create a new connection
+ 			fprintf(stderr, "Opening a new connection to %s:%d\n", host_.c_str(), port_);
+-			auto socket = boost::make_shared<TSocket>(host_, port_);
+-			auto transport = boost::make_shared<TBufferedTransport>(socket, 512 * 1024, 4096);
+-			auto protocol  = boost::make_shared<TBinaryProtocol>(transport);
++			auto socket = std::make_shared<TSocket>(host_, port_);
++			auto transport = std::make_shared<TBufferedTransport>(socket, 512 * 1024, 4096);
++			auto protocol  = std::make_shared<TBinaryProtocol>(transport);
+ 			auto client = std::unique_ptr<Client>(new Client(protocol));
+ 			socket->setNoDelay(true);
+ 			transport->open();

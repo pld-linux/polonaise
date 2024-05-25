@@ -1,0 +1,12 @@
+--- polonaise-0.3.1/CMakeLists.txt.orig	2014-09-16 15:54:36.000000000 +0200
++++ polonaise-0.3.1/CMakeLists.txt	2024-05-25 18:56:25.076332287 +0200
+@@ -62,7 +62,7 @@ install(FILES
+ 	"${PROJECT_BINARY_DIR}/PolonaiseConfig.cmake"
+ 	"${PROJECT_BINARY_DIR}/PolonaiseConfigVersion.cmake"
+ 	DESTINATION "${CMAKE_INSTALL_CMAKEDIR}"
+-	CONFIGURATIONS Debug Release)
++)
+ install(EXPORT PolonaiseTargets
+ 	DESTINATION "${CMAKE_INSTALL_CMAKEDIR}"
+-	CONFIGURATIONS Debug Release)
++)
